@@ -1,0 +1,5 @@
+<!--pages/jiesuanAI/jiesuanAI.wxml-->
+<image src="/pages/jiesuanAI/beijing.png" class="background"/>
+<view class="weizhi">
+<button class="zlyj" bind:tap="zlyj">再来一局</button>
+</view>

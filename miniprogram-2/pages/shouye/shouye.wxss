@@ -1,0 +1,46 @@
+/* pages/shouye/shouye.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.button1{
+  position:absolute;
+  top: 30%;
+  left:30%;
+  z-index: 1;
+}
+.button2{
+  position:absolute;
+  top: 45%;
+  left:30%;
+  z-index: 1;
+}
+.button3{
+  position:absolute;
+  top: 60%;
+  left:30%;
+  z-index: 1;
+}
+.button4{
+  position:absolute;
+  top: 75%;
+  left:30%;
+  z-index: 1;
+}
+.button5{
+  position:absolute;
+  top: 90%;
+  left:30%;
+  z-index: 1;
+}
+.bt{
+  position: absolute;
+  top: 2%;
+  left: 18%;
+  width: 20%;
+}
+.biaoti{
+  width: 1000rpx;
+  height: 330rpx;
+}

@@ -1,0 +1,9 @@
+<!--pages/bangzhu/bangzhu.wxml-->
+<image class="background" src="/pages/bangzhu/guize.png"></image>
+<swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imageUrls}}" wx:key="index">
+    <swiper-item>
+      <image src="{{item}}" class="swiper-image"></image>
+    </swiper-item>
+  </block>
+</swiper>

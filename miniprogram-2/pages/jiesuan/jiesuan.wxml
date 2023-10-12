@@ -1,0 +1,10 @@
+<!--pages/jiesuan/jiesuan.wxml-->
+<image class="background" src="/pages/shouye/beiing.png"></image>
+<view class = 'ziti1'>
+<text class = 'shengzhe'>{{shengzhe}}</text>
+<text class = 'baizhe'>{{baizhe}}</text>
+</view>
+<image class="diyi" src="/pages/jiesuan/guanjun.png"></image>
+<view class="weizhi">
+<image class="dier" src="/pages/jiesuan/yajun.png"></image>
+</view>

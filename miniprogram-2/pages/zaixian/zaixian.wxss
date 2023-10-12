@@ -1,0 +1,15 @@
+/* pages/zaixian/zaixian.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.jqqd{
+  font-size: 80rpx;
+  color: white;
+}
+.weizhi{
+  position: absolute;
+  top:29%;
+  left: 29%;
+}

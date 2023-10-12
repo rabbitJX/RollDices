@@ -1,0 +1,15 @@
+/* pages/jiesuanpl/jiesuanpl.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.weizhi{
+  position: absolute;
+  left: 28%;
+  top: 56%;
+}
+.zlyj{
+  width: 500rpx;
+  height: 87rpx;
+}

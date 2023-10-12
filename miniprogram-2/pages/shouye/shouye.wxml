@@ -1,0 +1,12 @@
+<!--pages/shouye/shouye.wxml-->
+<image class="background" src="/pages/shouye/beiing.png"></image>
+<view class="backgound-container">
+  <button class="button1" bindtap="bendiduizhan">本地对战</button>
+  <button class="button2" bindtap="renjiduizhan">人机对战</button>
+  <button class="button3" bindtap="zaixianduizhan">在线对战</button>
+  <button class="button4" bindtap="bangzhu">规则介绍</button>
+  <button class="button5" bindtap="paihangbang">排行榜</button>
+</view>
+<view class="bt">
+<image class="biaoti" src="/pages/shouye/biaoti.png"></image>
+</view>

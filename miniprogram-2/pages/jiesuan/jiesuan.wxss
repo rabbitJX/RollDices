@@ -1,0 +1,34 @@
+/* pages/jiesuan/jiesuan.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.ziti1{
+  color: white;
+  font-size: 54rpx;
+}
+.shengzhe{
+  position: absolute;
+  top: 20%;
+  left: 50%;
+}
+.baizhe{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.diyi{
+  position: absolute;
+  left: 9%;
+  top: 12%;
+  width: 300rpx;
+  height: 300rpx;
+}
+.dier{
+  position: absolute;
+  left: 9%;
+  top: 42%;
+  width: 300rpx;
+  height: 300rpx;
+}

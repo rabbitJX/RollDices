@@ -1,0 +1,5 @@
+<!--pages/zaixian/zaixian.wxml-->
+<image class="background" src="/pages/shouye/beiing.png"></image>
+<view class="weizhi">
+<text class="jqqd">敬请期待</text>
+</view>

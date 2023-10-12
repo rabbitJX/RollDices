@@ -1,0 +1,6 @@
+<!--pages/paihangbang/paihangbang.wxml-->
+<image class="background" src="/pages/shouye/beiing.png"></image>
+<view class="ziti1">
+<text class="wj">玩家</text>
+<text class="jf">积分</text>
+</view>

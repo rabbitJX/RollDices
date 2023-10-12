@@ -1,0 +1,17 @@
+/* pages/bangzhu/bangzhu.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.swiper-image{
+  width:100%;
+  height: 300rpx;
+}
+.swiper{
+  position: absolute;
+  top:780rpx;
+  left: 0;
+  width:100%;
+  height: 320rpx;
+}

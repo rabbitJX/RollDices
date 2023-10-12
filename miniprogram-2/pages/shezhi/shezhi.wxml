@@ -1,0 +1,9 @@
+<!--pages/shezhi/shezhi.wxml-->
+<view class="button">
+<button class="button1" bind:tap="tiaozhuan1">选好了</button>
+</view>
+<input placeholder="请在此输入" bindinput="inputChange1" class="wbk1" />
+<input placeholder="请在此输入" bindinput="inputChange2" class="wbk2"/>
+<input placeholder="请在此输入" bindinput="inputChange3" class="wbk3"/>
+
+<image class="background" src="/pages/shezhi/backround.png"></image>

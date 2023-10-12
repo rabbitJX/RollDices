@@ -1,0 +1,42 @@
+/* pages/shezhi/shezhi.wxss */
+.button1{
+  position: absolute;
+  margin-top: 800rpx;
+  margin-left: 100rpx;
+  width: 500rpx;
+}
+.wbk1{
+  position: absolute;
+  margin-left: 200rpx;
+  margin-top: 225rpx;
+  width: 200rpx;
+  height: 80rpx;
+  color: black;
+  background-color: white;
+}
+.wbk2{
+  position: absolute;
+  margin-left: 355rpx;
+  margin-top: 405rpx;
+  width: 200rpx;
+  height: 80rpx;
+  color: black;
+  background-color: white;
+}
+.wbk3{
+  position: absolute;
+  margin-left: 355rpx;
+  margin-top: 600rpx;
+  width: 200rpx;
+  height: 80rpx;
+  color: black;
+  background-color: white;
+}
+.button{
+  margin-left: 200rpx;
+}
+
+.background{
+  height:1500rpx;
+  width: 100%;
+}

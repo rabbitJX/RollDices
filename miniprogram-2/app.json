@@ -1,0 +1,27 @@
+{
+  "pages":[
+    "pages/shouye/shouye",
+    "pages/shezhi/shezhi",
+    "pages/bendi/bendi",
+    "pages/renji/renji",
+    "pages/zaixian/zaixian",
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/bangzhu/bangzhu",
+    "pages/shezhi1/shezhi1",
+    "pages/jiesuan/jiesuan",
+    "pages/jiesuanAI/jiesuanAI",
+    "pages/jiesuanpl/jiesuanpl",
+    "pages/paihangbang/paihangbang"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#efefef"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

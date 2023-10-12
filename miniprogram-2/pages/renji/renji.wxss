@@ -1,0 +1,199 @@
+/* pages/bendi/bendi.wxss */
+/*  以下为骰子锁定和未锁定*/
+.image1{
+  position:absolute;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 120rpx;
+}
+.image2{
+  position:absolute;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 230rpx;
+}
+.image3{
+  position:absolute;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 340rpx;
+}
+.image4{
+  position:absolute;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 450rpx;
+}
+.image5{
+  position:absolute;
+  margin-top: 20rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 560rpx;
+}
+.image1d{
+  position:absolute;
+  margin-top: 120rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 120rpx;
+}
+.image2d{
+  position:absolute;
+  margin-top: 120rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 230rpx;
+}
+.image3d{
+  position:absolute;
+  margin-top: 120rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 340rpx;
+}
+.image4d{
+  position:absolute;
+  margin-top: 120rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 450rpx;
+}
+.image5d{
+  position:absolute;
+  margin-top: 120rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 560rpx;
+}
+.image6{
+  position:absolute;
+  margin-top: 800rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 120rpx;
+}
+.image6d{
+  position:absolute;
+  margin-top: 900rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 120rpx;
+}
+.image7{
+  position:absolute;
+  margin-top: 800rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 230rpx;
+}
+.image7d{
+  position:absolute;
+  margin-top: 900rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 230rpx;
+}
+.image8{
+  position:absolute;
+  margin-top: 800rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 340rpx;
+}
+.image8d{
+  position:absolute;
+  margin-top: 900rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 340rpx;
+}
+.image9{
+  position:absolute;
+  margin-top: 800rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 450rpx;
+}
+.image9d{
+  position:absolute;
+  margin-top: 900rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 450rpx;
+}
+.image10{
+  position:absolute;
+  margin-top: 800rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 560rpx;
+}
+.image10d{
+  position:absolute;
+  margin-top: 900rpx;
+  height: 100rpx;
+  width: 100rpx;
+  margin-left: 560rpx;
+}
+/* 重投骰子 */
+.button{
+  margin-left: 200rpx;
+}
+.button1{
+  position: absolute;
+  margin-top: 500rpx;
+  margin-left: 500rpx;
+
+}
+/*倍数按钮*/
+.beishu1{
+  flex:0 0 100rpx;
+  text-align: center;
+  margin: 300rpx 8rpx auto 10rpx;
+  height: 50rpx;
+  line-height: 30rpx;
+}
+.beishu2{
+  flex:0 0 100rpx;
+  text-align: center;
+  margin: 700rpx 8rpx auto 10rpx;
+  height: 50rpx;
+  line-height: 30rpx;
+}
+
+.beishupailie{
+  display: flex;
+  justify-content: center;
+  resize: horizontal;
+}
+.bs{
+  position:absolute;
+  top: 700rpx;
+  left: 100rpx;
+}
+.ziti1{
+  font-size: 50rpx;
+}
+.ziti2{
+  font-size: 35rpx;
+}
+.cm1{
+  position:absolute;
+  top: 400rpx;
+  left: 250rpx;
+}
+.cm2{
+  position:absolute;
+  top: 1200rpx;
+  left: 250rpx;
+}
+.round{
+  position:absolute;
+  top: 600rpx;
+  left: 100rpx;
+}

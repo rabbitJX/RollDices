@@ -1,0 +1,20 @@
+/* pages/paihangbang/paihangbang.wxss */
+.background{
+  height:1500rpx;
+  width: 100%;
+  z-index: -1;
+}
+.wj{
+  position: absolute;
+  top: 9%;
+  left: 19%;
+}
+.jf{
+  position: absolute;
+  top: 9%;
+  left: 64%;
+}
+.ziti1{
+  color: white;
+  font-size: 54rpx;
+}
