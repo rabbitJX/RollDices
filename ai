@@ -1,0 +1,125 @@
+import numpy as np
+import csv
+from collections import Counter
+import random
+import itertools
+from main import GamblingScore, GamblingRes
+from DE import SelectRate
+
+
+expect = np.zeros(9331, dtype=float)
+
+def tree_push(x1, x2, x3, x4, x5, num):
+    index = ((((0 * 6 + x1) * 6 + x2) * 6 + x3) * 6 + x4) * 6 + x5
+    expect[index] = num
+
+def get_index(player_dice):
+    index = 0
+    for i in range(len(player_dice)):
+        index = index * 6 + player_dice[i]
+    return index
+
+def get_all_expect(depth, index):
+    if depth >= 5:
+        return
+    for i in range(1, 7):
+        get_all_expect(depth + 1, index * 6 + i)
+        expect[index] += expect[index * 6 + i]
+    expect[index] /= 6.0
+
+def init_expect():
+    a = [0] * 5
+    for i1 in range(6):
+        for i2 in range(6):
+            for i3 in range(6):
+                for i4 in range(6):
+                    for i5 in range(6):
+                        res = [i1 + 1, i2 + 1, i3 + 1, i4 + 1, i5 + 1]
+                        tree_push(i1 + 1, i2 + 1, i3 + 1, i4 + 1, i5 + 1, GamblingScore(res))
+
+
+    get_all_expect(0, 0)
+    # expect[0] = expect[1] + expect[2] + expect[3] + expect[4] + expect[5] + expect[6]
+    # expect[0] /= 6.0
+
+
+def lock_dice(player_lock, player_dice):
+    # print(f"{self.current_player.name}'s locked_dice: {player_lock}")
+    if len(player_lock) >= 5:
+        # print("You already have 5 locked dice. You cannot lock more.")
+        return
+    player_dice.sort()
+    dice = player_lock
+    all_combinations = []
+    player_index = get_index(player_lock)
+    max_expect = -100
+    max_index = player_index
+    count = 5 - len(player_lock)  # 剩余可选骰子数
+    for i in range(count + 1):  # 0到count个骰子
+        combinations = list(itertools.combinations(player_dice[:count], i))  # 生成i个骰子的组合
+        all_combinations.extend(combinations)
+
+    for combination in all_combinations:
+        init_index = player_index
+        for i in range(len(combination)):
+            init_index = init_index * 6 + combination[i]
+        if expect[init_index] > max_expect:
+            max_expect = expect[init_index]
+            max_index = init_index
+            player_lock = combination
+
+    player_lock = list(player_lock)
+    player_lock += dice
+    # print(player_lock)
+    player_index = max_index
+
+    return player_lock
+
+def RollDices(round):
+    player_lock, AI_lock = [], []
+    rate = 1
+    for game in range(1, 4):
+        print("第{}回合第{}轮".format(round, game))
+
+        if len(player_lock) != 5:
+            player_dices = [random.randint(1, 6) for _ in range(5 - len(player_lock))]
+            print("player的骰子区为：{}".format(player_dices))
+            if game != 3:
+                lock = input("player请选择要锁定的骰子序号:").replace(" ", '')
+                player_lock.extend(player_dices[int(index) - 1] for index in lock)
+            else:
+                player_lock.extend(player_dices)
+
+        if len(AI_lock)!= 5:
+            AI_dices = [random.randint(1, 6) for _ in range(5 - len(AI_lock))]
+            print("AI的骰子区为：{}".format(AI_dices))
+            if game != 3:
+                AI_lock = lock_dice(AI_lock, AI_dices)
+                print("AI锁定的骰子序号:{}".format(AI_lock))
+            else:
+                AI_lock.extend(AI_dices)
+        # print("两位玩家当前锁定区期望值: {}:{}".format(expect[get_index(player_lock)], expect[get_index(AI_lock)]))
+        if game != 3:
+            player_rate = int(input("player选择倍率为："))
+            rate += player_rate
+            rate_AI = SelectRate(player_rate, expect[get_index(player_lock)], expect[get_index(AI_lock)])
+
+            print("AI选择倍率为：{}".format(rate_AI))
+            rate += rate_AI
+        print("当前倍率来到{}倍".format(rate))
+        print("当前两位玩家的牌型为:{}, {}\n".format(player_lock, AI_lock))
+
+    return player_lock, AI_lock, rate
+
+init_expect()
+
+rounds = int(input("请输入游戏局数："))
+player1_chip, player2_chip = 1000, 1000
+for round in range(1, rounds + 1):
+    player1_lock, player2_lock, rate = RollDices(round)
+    player1_score = GamblingScore(player1_lock)
+    player2_score = GamblingScore(player2_lock)
+    flag_over, player1_chip, player2_chip = GamblingRes(player1_score, player2_score, player1_chip, player2_chip, rate, round, rounds, 1)
+    if flag_over == True:
+        break
+input()
