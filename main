@@ -1,0 +1,139 @@
+import random
+from collections import Counter
+
+def RollDices(round):
+    player1_lock, player2_lock = [], []
+    rate = 1
+    for game in range(1, 4):
+        print("第{}回合第{}轮".format(round, game))
+
+        if len(player1_lock) != 5:
+            player1_dices = [random.randint(1, 6) for _ in range(5 - len(player1_lock))]
+            print("player1的骰子区为：{}".format(player1_dices))
+            if game != 3:
+                lock = input("player1请选择要锁定的骰子序号:").replace(" ", '')
+                player1_lock.extend(player1_dices[int(index) - 1] for index in lock)
+            else:
+                player1_lock.extend(player1_dices)
+
+        if len(player2_lock)!= 5:
+            player2_dices = [random.randint(1, 6) for _ in range(5 - len(player2_lock))]
+            print("player2的骰子区为：{}".format(player2_dices))
+            if game != 3:
+                lock = input("player2请选择要锁定的骰子序号:").replace(" ", '')
+                player2_lock.extend(player2_dices[int(index) - 1] for index in lock)
+            else:
+                player2_lock.extend(player2_dices)
+
+        if game != 3:
+            rate += int(input("player1选择倍率为："))
+            rate += int(input("player2选择倍率为："))
+
+        print("当前倍率来到{}倍".format(rate))
+        print("当前两位玩家的牌型为:{}, {}\n".format(player1_lock, player2_lock))
+
+    return player1_lock, player2_lock, rate
+
+
+
+def GamblingScore(player_lock):
+    cluster = {}
+    score = 0
+    for dice in player_lock:
+        if dice not in cluster:
+            cluster[dice] = 1
+        else:
+            cluster[dice] += 1
+
+    if 5 in cluster.values():
+        score = 100
+    elif 4 in cluster.values():
+        score = 40
+    elif 3 in cluster.values():
+        if 2 in cluster.values():
+            score = 20
+        else:
+            score = 10
+    else:
+        player_lock = sorted(player_lock)
+        if Counter(cluster.values())[2] >= 2:
+            score = 10
+        elif Counter(cluster.values())[2] == 1:
+            if player_lock[0] == 1 and player_lock[4] == 4:
+                score = 30
+            elif player_lock[0] == 2 and player_lock[4] == 5:
+                score = 30
+            elif player_lock[0] == 3:
+                score = 30
+        else:
+            if player_lock[0] == 1:
+                if player_lock[4] == 5:
+                    score = 60
+                elif player_lock[1] == 3 or (player_lock[4] == 6 and player_lock[3] ==4):
+                    score = 30
+            if player_lock[0] == 2:
+                score = 60
+
+
+    score += sum(int(i) for i in player_lock)
+    return score
+
+
+
+def GamblingRes(player1_score, player2_score, player1_chip, player2_chip, rate, round, rounds, flag):
+    chips = abs(player1_score - player2_score) * rate
+    flag_over = False
+    if flag == 1:
+        name1 = 'player'
+        name2 = 'AI'
+    else:
+        name1 = 'player1'
+        name2 = 'player2'
+
+    print("本回合得分比: [{}:{}]".format(player1_score, player2_score))
+
+    if player1_score > player2_score:
+        player1_chip += chips
+        player2_chip -= chips
+        print("{}从{}手中赢得了{}点筹码!".format(name1, name2, chips))
+
+    elif player1_score < player2_score:
+        player1_chip -= chips
+        player2_chip += chips
+        print("{}从{}手中赢得了{}点筹码!".format(name2, name1, chips))
+
+    else:
+        print("本回合平局")
+
+    print("本回合筹码比: [{}:{}]\n".format(player1_chip, player2_chip))
+
+    if player1_chip <= 0:
+        print("{}真瞎骰，游戏结束！".format(name1))
+        flag_over = True
+    if player2_chip <= 0:
+        print("{}真瞎骰，游戏结束！".format(name2))
+        flag_over = True
+
+    if round == rounds:
+        if player1_chip > player2_chip:
+            print("第一名：{}，筹码点数：{}".format(name1, player1_chip))
+            print("第二名：{}，筹码点数：{}".format(name2, player2_chip))
+        elif player1_chip < player2_chip:
+            print("第一名：{}，筹码点数：{}".format(name2, player2_chip))
+            print("第二名：{}，筹码点数：{}".format(name1, player1_chip))
+        else:
+            print("本局游戏平局")
+
+    return flag_over, player1_chip, player2_chip
+
+if __name__ == "__main__":
+    rounds = int(input("请输入游戏局数："))
+    player1_chip, player2_chip = 1000, 1000
+    for round in range(1, rounds + 1):
+        player1_lock, player2_lock, rate = RollDices(round)
+        player1_score = GamblingScore(player1_lock)
+        player2_score = GamblingScore(player2_lock)
+        flag_over = GamblingRes(player1_score, player2_score, player1_chip, player2_chip, rate, round, rounds, 0)
+        if flag_over == True:
+            break
+    input()
