@@ -1,0 +1,78 @@
+import random
+import numpy as np
+
+# 定义常量和参数
+POP_SIZE = 150  # 种群大小
+GENE_SIZE = 24  # 基因长度
+CROSS_RATE = 0.8  # 交叉概率
+MUTATION_RATE = 0.05  # 变异概率
+N_GENERATIONS = 5000  # 迭代次数
+
+
+# 定义适应度函数，根据倍率选择和得分差计算适应度值
+def fitness_function(rate, player_score, opponent_score):
+    score_diff_abs = abs(player_score - opponent_score)
+    total_score = player_score + opponent_score
+    return rate * (score_diff_abs / total_score)
+
+def SelectRate(player_rate, player_expect, AI_expect):
+    if player_expect > AI_expect:
+        return 0
+    elif player_expect == AI_expect:
+        return random.choice([0, 1])
+    else:
+        if AI_expect - player_expect >= 4.22342542:
+            return 3
+        else:
+            if player_rate >= 1:
+                return random.choice([0, 1])
+            else:
+                return 3
+
+def ganerate(player_rate, player_score, opponent_score):
+# 创建初始种群
+    pop = np.random.randint(0, 4, size=(POP_SIZE, GENE_SIZE))
+    all_fitness = []
+    # 开始遗传算法的迭代过程
+    for generation in range(N_GENERATIONS):
+        # 计算每个个体的适应度值
+        fitness = np.empty(POP_SIZE)
+        for i, ind in enumerate(pop):
+            # player_rate = ind[0]  # 选择一个元素作为player_rate的值
+            # # 假设玩家和对手的得分为随机值
+            # player_score = random.randint(1, 30)
+            # opponent_score = random.randint(1, 30)
+            fitness[i] = fitness_function(player_rate, player_score, opponent_score)
+            print(fitness[i])
+        # 选择优秀个体作为父母
+        parents = np.empty((POP_SIZE, GENE_SIZE))
+        for i in range(POP_SIZE):
+            idx = np.random.choice(range(POP_SIZE), size=2, replace=False)
+            parents[i] = pop[idx].max(axis=0)
+
+        # 交叉和变异操作
+        children = np.empty((POP_SIZE, GENE_SIZE))
+        for i in range(POP_SIZE):
+            if np.random.rand() < CROSS_RATE:
+                child = np.empty(GENE_SIZE)
+                parent_idx = np.random.choice(range(POP_SIZE), size=2, replace=False)
+                cross_pos = np.random.randint(0, GENE_SIZE)
+                child[0:cross_pos] = parents[parent_idx[0], 0:cross_pos]
+                child[cross_pos:] = parents[parent_idx[1], cross_pos:]
+                children[i] = child.astype(int)
+            else:
+                children[i] = parents[i]
+            if np.random.rand() < MUTATION_RATE:
+                mutate_pos = np.random.randint(0, GENE_SIZE)
+                children[i, mutate_pos] = np.random.randint(0, 4)
+
+        # 更新种群
+        pop = children
+
+    # 选择最优个体
+    best_idx = fitness.argmax()
+    print("best_index:{}".format(best_idx))
+    best_rate = pop[best_idx]
+
+    print("最优倍率选择为：", best_rate)
+    return best_rate[0]
